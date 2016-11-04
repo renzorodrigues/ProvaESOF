@@ -14,14 +14,22 @@ public class Fila {
 		pessoas.remove(p);
 	}
 	
-	public Pessoa proximoFila(){
+	public Pessoa proximoFila() {
 		Pessoa proximo = null;
-		
-		proximo = verificaGravida();
-		
-		if(proximo == null)
-			proximo = pessoas.get(0);
-		
+
+		if (pessoas.isEmpty())
+			return null;
+
+		proximo = verificaIdoso();
+
+		if (proximo == null) {
+
+			proximo = verificaGravida();
+
+			if (proximo == null)
+				proximo = pessoas.get(0);
+		}
+
 		return proximo;
 	}
 	
